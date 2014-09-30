@@ -1,0 +1,8 @@
+{
+    "name": "eblana_app",
+    "description": "First draft Eblana app",
+    "version": "0.1",
+    "port": 9080,
+    "log_file": "service.log",
+    "development": true
+}

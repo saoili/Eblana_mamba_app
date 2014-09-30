@@ -1,0 +1,72 @@
+/*
+ *  -*- mamba-file-type: mamba-css -*-
+ */
+
+body {
+    background-color: #fff;
+    color: #333;
+    display: block;
+    font-family: "Helvetica Neue", Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    padding-top: 40px;
+    position: relative;
+}
+
+a {
+    color: #717171;
+}
+
+.navigation {
+    content: "";
+    background-color: #fafafa;
+    background-image: linear-gradient(to bottom, #fff, #f2f2f2);
+    background-repeat: repeat x;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    line-height: 0;
+    left: 0;
+    margin-bottom: 0;
+    min-height: 40px;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.nav {
+    display: block;
+    float: left;
+    left: 0;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+    position: relative;
+}
+
+.nav li {
+    display: list-item;
+    float: left;
+    line-height: 20px;
+    margin-left: 30px;
+    margin-top: 8px;
+}
+
+.nav li a {
+    text-decoration: none;
+}
+
+.nav li a:hover {
+    color: #aab212;
+}
+
+.content {
+    margin: 20px auto;
+    width: 920px;
+}
+
+.content h2 {
+    font-size: 40px;
+    margin: 60px 0 10px;
+    font-weight: 200;
+}

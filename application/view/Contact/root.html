@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+    {% block content %}
+    {{ super() }}
+
+    <!--
+        Copyright (c) 2014 - sorcha <sorcha@localhost>
+
+        view: Root
+            synopsis: Contact view for contact controller on Eblana
+
+        viewauthor: sorcha <sorcha@localhost>
+    -->
+
+    <div class="content">
+        <h2>Contact Form</h2>
+        <form>
+            <fieldset>
+                <legend>Dummy fashion contact form</legend>
+                <label>Name</label>
+                <input id="name" type="text" required><br />
+                <label>Email</label>
+                <input id="email" type="email" required><br />
+                <label>Message</label><br />
+                <textarea id="content" rows="6" cols="40">
+                </textarea><br />
+                <button type="submit">Send Request</button>
+            </fieldset>
+        </form>
+    </div>
+
+    {% endblock %}

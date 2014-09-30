@@ -1,0 +1,26 @@
+{% extends "root_page.html" %}
+{% block head %}
+    <!-- Put your head content here, without <head></head> tags -->
+{{ super() }}
+{% endblock %}
+{% block body %}
+    <!-- Put your body content here, without <body></body> tags -->
+
+    {% block navigation %}
+    <div class="navigation">
+        <ul class="nav">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about_us">About us</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+{% endblock %}
+{% block scripts %}
+    <!-- Put your loadable scripts here -->
+{{ super() }}
+{% endblock %}
