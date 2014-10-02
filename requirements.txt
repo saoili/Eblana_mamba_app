@@ -1,0 +1,23 @@
+Flask==0.10.1
+Jinja2==2.7.3
+MarkupSafe==0.23
+MySQL-python==1.2.5
+Twisted==14.0.2
+Werkzeug==0.9.6
+argparse==1.2.1
+ecdsa==0.11
+ipython==2.2.0
+itsdangerous==0.24
+-e git+https://github.com/PyMamba/mamba-framework.git@519b092ec6a39b951e4dfb8485ccafd6c1be9492#egg=mamba_framework-dev
+paramiko==1.15.1
+pycrypto==2.6.1
+singledispatch==3.4.0.3
+six==1.8.0
+-e git+https://github.com/DamnWidget/mamba-storm.git@5b0e8d1437ccbece6e4c2b02faf88df51b2b53e0#egg=storm-master
+stormssh==0.6.5
+termcolor==1.1.0
+transaction==1.4.3
+wsgiref==0.1.2
+zope.component==4.2.1
+zope.event==4.0.3
+zope.interface==4.1.1
