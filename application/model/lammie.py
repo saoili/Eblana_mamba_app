@@ -37,5 +37,7 @@ class Lammie(model.Model):
     slot = Unicode(size=15)
     class_to_use = Unicode(size=15)
     character_id = Int(unsigned=True)
+    creator_id = Int(unsigned=True)
     character = Reference(character_id, Character.id)
+    creator = Reference(creator_id, Character.id)
 
