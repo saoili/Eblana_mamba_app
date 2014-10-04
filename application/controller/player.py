@@ -13,7 +13,7 @@
 from mamba.web.response import Ok, BadRequest
 from mamba.application import route
 from mamba.application import controller
-from application.model.player import Player
+from application.model.player import Player as PlayerModel
 
 
 class Player(controller.Controller):
@@ -39,7 +39,12 @@ class Player(controller.Controller):
         str_kwargs = str(kwargs)
         required = [
             "name", "mobile", "email",
-            "emergency_name", "emergency_mobile", "old_id"]
+            "emergency_name", "emergency_mobile", "old_id"
+        ]
+        unicodes = [
+            "name", "mobile", "email",
+            "emergency_name", "emergency_mobile"
+        ]
 
         for requirement in required:
             if requirement not in kwargs:
@@ -49,8 +54,32 @@ class Player(controller.Controller):
                     )
                 )
 
+        for requirement in unicodes:
+            kwargs[requirement] = unicode(
+                kwargs[requirement]
+            )
+        kwargs["old_id"] = int(kwargs["old_id"])
+
+
+        p = PlayerModel()
+        print "p is {}".format(p)
+        p.name = kwargs["name"]
+        print "p.name is {}".format(p.name)
+
+        x = p.create_from_dict(kwargs)
+        print "x is {}".format(x)
+
+        # want to replace the below with something 
+        # that returns appropriate response codes
+        # and messages 
+        def temp_print(input):
+            print input
+            return input
+
+        x.addCallback(temp_print)
         return Ok(
-            'Create a player with {} you say'.format(
+            'Create a PlayerModel with {} you say'.format(
                 str_kwargs
             )
         )
+
