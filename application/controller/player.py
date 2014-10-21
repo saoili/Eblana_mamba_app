@@ -10,6 +10,7 @@
 .. controllerauthor:: sorcha <sorcha@localhost>
 """
 
+from mamba.core import templating
 from mamba.web.response import Ok, BadRequest
 from mamba.application import route
 from mamba.application import controller
@@ -29,10 +30,16 @@ class Player(controller.Controller):
         Put your initialization code here
         """
         super(Player, self).__init__()
+        self.template = templating.Template(
+            controller=self
+        )
+
 
     @route('/')
     def root(self, request, **kwargs):
-        return Ok('I am the Player, hello world!')
+        return Ok(
+            "Player controller"
+        )
 
     @route('/create', method='POST')
     def create(self, request, **kwargs):
@@ -69,17 +76,10 @@ class Player(controller.Controller):
         x = p.create_from_dict(kwargs)
         print "x is {}".format(x)
 
-        # want to replace the below with something 
-        # that returns appropriate response codes
-        # and messages 
         def temp_print(input):
-            print input
-            return input
+            if "Created" in input:
+                return Ok(input)
+            return BadRequest(input)
 
         x.addCallback(temp_print)
-        return Ok(
-            'Create a PlayerModel with {} you say'.format(
-                str_kwargs
-            )
-        )
-
+        return x

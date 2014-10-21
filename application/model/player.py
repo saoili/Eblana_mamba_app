@@ -34,7 +34,7 @@ class Player(model.Model):
     emergency_mobile = Unicode(size=20)
     old_id = Int(size=20, unique=True)
 
-    def init(self):
+    def __init__(self):
         self.__unique__ = ["mobile", "email", "old_id"]
 
     @transact
@@ -51,14 +51,17 @@ class Player(model.Model):
                 async=False
             )
             if results.count() != 0:
+                existing = results[0].id
                 return (
-                    "cannot create player with {}".format(
+                    "Cannot create player with {}".format(
                         field
                     ) +
                     ": {}".format(
                         data[field]
                     ) +
-                    " because we already have one"
+                    " because we already have one, {}".format(
+                        existing
+                    )
                 )
 
         for field in fields:
@@ -66,15 +69,13 @@ class Player(model.Model):
         player.store().add(player)
         player.store().flush()
 
-        
-        #not doing it this way because 
+        #not doing it this way because
         #that uses up the next auto assign
         #try:
         #    player.store().flush()
         #except IntegrityError as err:
         #    print "err is type {}".format(type(err))
-        
+
         return "Created player number {}".format(
             player.dict()["id"]
         )
-        
