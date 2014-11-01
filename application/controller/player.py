@@ -11,7 +11,7 @@
 """
 
 from mamba.core import templating
-from mamba.web.response import Ok, BadRequest
+from mamba.web.response import Ok, BadRequest, AlreadyExists
 from mamba.application import route
 from mamba.application import controller
 from application.model.player import Player as PlayerModel
@@ -37,8 +37,11 @@ class Player(controller.Controller):
 
     @route('/')
     def root(self, request, **kwargs):
+        # return Ok(
+        #     "Player controller"
+        # )
         return Ok(
-            "Player controller"
+            self.template.render().encode('utf-8')
         )
 
     @route('/create', method='POST')
@@ -67,7 +70,6 @@ class Player(controller.Controller):
             )
         kwargs["old_id"] = int(kwargs["old_id"])
 
-
         p = PlayerModel()
         print "p is {}".format(p)
         p.name = kwargs["name"]
@@ -79,6 +81,8 @@ class Player(controller.Controller):
         def temp_print(input):
             if "Created" in input:
                 return Ok(input)
+            if "Cannot" in input:
+                return AlreadyExists(input)
             return BadRequest(input)
 
         x.addCallback(temp_print)
